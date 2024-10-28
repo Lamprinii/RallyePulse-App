@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Rallye Pulse - App</string>
+    <string name="enable_bluetooth"> Please enable Bluetooth</string>
+    <string name="enable_bluetooth_prompt"> The app requires bluetooth to work correctly. Do you wish to enable it?</string>
+    <string name="cancel"> Cancel</string>
+    <string name="connectedtk"> Connected to the timekeeper</string>
+    <string name="waitingcontk"> Waiting for connection with the timekeeper</string>
+
 </resources>
