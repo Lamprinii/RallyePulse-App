@@ -10,4 +10,11 @@
     <string name="enterpass">Enter competitors password.</string>
     <string name="compmode">Enter competitor mode.</string>
     <string name="spectmode">Alternatively enter spectator mode.</string>
+    <string name="errorauth">The given passcode is wrong. Please try again or enter spectator mode.</string>
+    <string name="hellospect">Hello Loyal Rallye Fan!</string>
+    <string name="entrylist">Entry List</string>
+    <string name="stageresults">Stage Results</string>
+    <string name="overalls">Overalls</string>
+    <string name="startlist">Start List</string>
+
 </resources>
