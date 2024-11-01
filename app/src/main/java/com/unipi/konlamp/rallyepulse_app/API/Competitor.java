@@ -1,6 +1,8 @@
 package com.unipi.konlamp.rallyepulse_app.API;
+import java.io.Serializable;
 
-public class Competitor {
+public class Competitor implements Serializable {
+
     private Long co_number;
     private String driver;
     private String codriver;

@@ -16,5 +16,8 @@
     <string name="stageresults">Stage Results</string>
     <string name="overalls">Overalls</string>
     <string name="startlist">Start List</string>
-
+    <string name="competitorno">Competitor No.</string>
+    <string name="position">Position</string>
+    <string name="racemode">Race Mode</string>
+    <string name="settings">Settings</string>
 </resources>

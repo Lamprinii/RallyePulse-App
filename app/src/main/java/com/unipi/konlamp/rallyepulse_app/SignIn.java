@@ -48,11 +48,17 @@ public class SignIn extends AppCompatActivity {
         startActivity(myintent);
     }
     private void showMessage(String title, String message){
-        new AlertDialog.Builder(this) //Εμφανίζουμε κάποιο alert
+        new AlertDialog.Builder(this)
                 .setCancelable(true)
                 .setTitle(title)
                 .setMessage(message)
                 .show();
+    }
+
+    public void jumptocompetitor(Competitor competitor){
+        Intent myIntent = new Intent(this, CompetitorMode.class);
+        myIntent.putExtra("competitor",competitor);
+        startActivity(myIntent);
     }
     public void authentication(){
         RetrofitInstance.rallyePulseAPI().getByPasscode(editTextText.getText().toString()).enqueue(new Callback<Competitor>() {
@@ -61,6 +67,7 @@ public class SignIn extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Competitor createdUser = response.body();
                     Log.d("MainActivity", "Created User: " + createdUser);
+                    jumptocompetitor(createdUser);
                 } else {
                     try {
                         String errorBody = response.errorBody().string();

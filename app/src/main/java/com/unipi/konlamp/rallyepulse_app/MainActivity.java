@@ -34,6 +34,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import java.nio.ByteBuffer;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -75,11 +76,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
 
     private UUID UUID_NUMBER = UUID.fromString("00002a37-0000-1000-8000-00805f9b34fb");
-
+    private Long conumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        conumber = this.getIntent().getLongExtra("conumber", 0);
         countdownText = findViewById(R.id.countdownText);
         statusLabel = findViewById(R.id.statusLabel);
         startButton = findViewById(R.id.startButton);
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         if (!bluetoothAdapter.isEnabled()) {
             enableBluetoothDialog();
         } else {
-            bluetoothAdapter.setName("RFTH_No1");
+            bluetoothAdapter.setName("Rallye_" + conumber);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startTime = LocalTime.of(17, 11);
@@ -255,7 +257,9 @@ public class MainActivity extends AppCompatActivity {
             public void onCharacteristicReadRequest(BluetoothDevice device, int requestId, int offset, BluetoothGattCharacteristic characteristic) {
                 //super.onCharacteristicReadRequest(device, requestId, offset, characteristic);
                 if (UUID_NUMBER.equals(characteristic.getUuid())) {
-                    byte[] response = new byte[]{42}; // Example number to send
+                    ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
+                    buffer.putLong(conumber);
+                    byte[] response = buffer.array(); // Example number to send
                     gattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, response);
                 }
             }

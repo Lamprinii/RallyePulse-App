@@ -1,5 +1,6 @@
 package com.unipi.konlamp.rallyepulse_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,19 +11,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class SpectatorMode extends AppCompatActivity {
+import com.unipi.konlamp.rallyepulse_app.API.Competitor;
 
+public class CompetitorMode extends AppCompatActivity {
 
+    private TextView textView6;
+    private TextView textView4;
+    private Competitor competitor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_spectator_mode);
+        setContentView(R.layout.activity_competitor_mode);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        textView6 = findViewById(R.id.textView6);
+        textView4 = findViewById(R.id.textView4);
+        competitor = (Competitor)this.getIntent().getSerializableExtra("competitor");
+        textView6.setText("#" + competitor.getCo_number());
+        textView4.setText("Hello " + competitor.getDriver().split(" ")[0] + " and " + competitor.getCodriver().split(" ")[0]);
     }
 
     public void stageresults(View view){
@@ -44,5 +54,14 @@ public class SpectatorMode extends AppCompatActivity {
 
 
     }
+    public void settings(View view){
 
+
+    }
+    public void racemode(View view){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        myIntent.putExtra("conumber", competitor.getCo_number());
+        startActivity(myIntent);
+
+    }
 }
