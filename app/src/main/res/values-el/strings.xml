@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rallye Pulse - App</string>
+    <string name="enable_bluetooth">Παρακαλώ ενεργοποιείστε τα bluetooth</string>
+    <string name="enable_bluetooth_prompt">"Η εφαρμογή χρειάζεται bluetooth για να λειτουργήσει. Επιθυμείτε να τα ενεργοποιήσετε; "</string>
+    <string name="cancel">Άκυρο</string>
+    <string name="connectedtk">Συνδεδεμένο με χρονομέτρη</string>
+    <string name="waitingcontk">Αναμονή για σύνδεση με χρονομέτρη</string>
+    <string name="enterascomp">Είσοδος Αγωνιζόμενου</string>
+    <string name="compprom">Εάν είστε αγωνιζόμενος εισάγετε τον κωδικό σας για να εισέλθετε</string>
+    <string name="enterpass">Εισάγετε τον κωδικό</string>
+    <string name="compmode">Είσοδος αγωνιζομένου</string>
+    <string name="spectmode">Εναλλακτικά εισέλθετε ως θεατής</string>
+    <string name="errorauth">Ο κωδικός είναι λάθος. Παρακαλώ δοκιμάστε ξανά</string>
+    <string name="hellospect">Γεια σου φίλε θεατή!</string>
+    <string name="entrylist">Λίστα Συμμετοχών</string>
+    <string name="stageresults">Αποτελέσματα Ε.Δ</string>
+    <string name="overalls">Συνολικά Αποτελέσματα</string>
+    <string name="startlist">Start List</string>
+    <string name="competitorno">Αρ. Συμμετοχής</string>
+    <string name="position">Θέση</string>
+    <string name="racemode">Race Mode</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="newemail">Εισάγετε το καινούριο email.</string>
+    <string name="newphone">Εισάγετε τον καινούριο αριθμό τηλεφώνου.</string>
+    <string name="updinfo">Ενήμερωση πληροφοριών</string>
+    <string name="and">και</string>
+    <string name="hello">Γεια σου</string>
+</resources>

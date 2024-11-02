@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECEAEA"
+    tools:context=".Settings">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="update"
+        android:text="@string/updinfo"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="412dp"
+        android:layout_height="225dp"
+        android:background="@drawable/rounded_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView4"
+        android:layout_width="112dp"
+        android:layout_height="110dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:shapeAppearance="@style/Circular"
+        app:srcCompat="@drawable/gears_solid" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="146dp"
+        android:layout_height="44dp"
+        android:text="@string/settings"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view4"
+        app:layout_constraintVertical_bias="0.196" />
+
+    <TableLayout
+        android:layout_width="413dp"
+        android:layout_height="297dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.518">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="40dp"
+                android:layout_height="32dp"
+                android:paddingRight="5dp"
+                app:srcCompat="@drawable/free_red_steering_wheel_and_driver_hands_icon_17663_thumb" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="310dp"
+                android:layout_height="25dp"
+                android:text="Lamprini"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="37dp"
+                android:layout_height="29dp"
+                app:srcCompat="@drawable/book_open_reader_solid" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="310dp"
+                android:layout_height="25dp"
+                android:text="Konstantinos"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="31dp"
+                android:layout_height="27dp"
+                app:srcCompat="@drawable/at_solid" />
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress"
+                android:layout_width="311dp"
+                android:layout_height="35dp"
+                android:background="@drawable/editround"
+                android:ems="10"
+                android:hint="@string/newemail"
+                android:inputType="textEmailAddress" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="28dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/phone_solid" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="311dp"
+                android:layout_height="35dp"
+                android:background="@drawable/editround"
+                android:ems="10"
+                android:hint="@string/newphone"
+                android:inputType="phone" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

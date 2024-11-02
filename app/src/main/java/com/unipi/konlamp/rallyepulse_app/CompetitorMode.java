@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import com.unipi.konlamp.rallyepulse_app.Settings;
 import com.unipi.konlamp.rallyepulse_app.API.Competitor;
 
 public class CompetitorMode extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class CompetitorMode extends AppCompatActivity {
         textView4 = findViewById(R.id.textView4);
         competitor = (Competitor)this.getIntent().getSerializableExtra("competitor");
         textView6.setText("#" + competitor.getCo_number());
-        textView4.setText("Hello " + competitor.getDriver().split(" ")[0] + " and " + competitor.getCodriver().split(" ")[0]);
+        textView4.setText(getString(R.string.hello)+ " " + competitor.getDriver().split(" ")[0] + " " + getString(R.string.and) +" " + competitor.getCodriver().split(" ")[0]);
     }
 
     public void stageresults(View view){
@@ -55,6 +55,9 @@ public class CompetitorMode extends AppCompatActivity {
 
     }
     public void settings(View view){
+        Intent myIntent = new Intent(this, Settings.class);
+        myIntent.putExtra("competitor",competitor);
+        startActivity(myIntent);
 
 
     }
