@@ -26,4 +26,6 @@
     <string name="updinfo">Ενήμερωση πληροφοριών</string>
     <string name="and">και</string>
     <string name="hello">Γεια σου</string>
+    <string name="selectspecial">Επιλογή Ε.Δ</string>
+
 </resources>

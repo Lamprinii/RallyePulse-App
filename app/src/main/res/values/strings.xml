@@ -25,5 +25,6 @@
     <string name="updinfo">Update your info.</string>
     <string name="and">and</string>
     <string name="hello">Hello</string>
+    <string name="selectspecial">Select S.S</string>
 
 </resources>

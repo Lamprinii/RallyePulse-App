@@ -1,4 +1,6 @@
 package com.unipi.konlamp.rallyepulse_app.API;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -12,5 +14,7 @@ public interface RallyePulseAPI {
         @PUT("/api/competitor")
         Call<Competitor> updatecompetitor(@Body Competitor competitor);
 
+        @GET("/api/specialstage/getstartedspecialstages")
+        Call<List<SpecialStage>> getStartedSpecialStages();
 
 }

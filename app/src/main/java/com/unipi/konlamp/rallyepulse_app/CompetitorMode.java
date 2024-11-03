@@ -2,6 +2,7 @@ package com.unipi.konlamp.rallyepulse_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,11 +14,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.unipi.konlamp.rallyepulse_app.Settings;
 import com.unipi.konlamp.rallyepulse_app.API.Competitor;
 
-public class CompetitorMode extends AppCompatActivity {
+public class CompetitorMode extends AppCompatActivity implements PopUp.MyDialogListener {
 
     private TextView textView6;
     private TextView textView4;
     private Competitor competitor;
+    private static final int REQUEST_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +39,14 @@ public class CompetitorMode extends AppCompatActivity {
     }
 
     public void stageresults(View view){
+        PopUp dialog = new PopUp();
+        dialog.setTargetFragment(null, REQUEST_CODE);
+        dialog.show(getSupportFragmentManager(), "PopUp");
 
-
+    }
+    @Override
+    public void onDialogPositiveClick(String inputText) {
+        Log.d("MainActivity", "Received input: " + inputText);
     }
 
     public void entrylist(View view){
