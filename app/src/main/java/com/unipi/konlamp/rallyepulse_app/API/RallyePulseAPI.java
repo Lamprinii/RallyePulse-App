@@ -11,10 +11,16 @@ public interface RallyePulseAPI {
         @GET("/api/competitor/getbypasscode/{passcode}")
         Call<Competitor> getByPasscode(@Path("passcode") String passcode);
 
+        @GET("/api/competitor/getCompetitor/{id}")
+        Call<Competitor> getByid(@Path("id") Long id);
+
         @PUT("/api/competitor")
         Call<Competitor> updatecompetitor(@Body Competitor competitor);
 
         @GET("/api/specialstage/getstartedspecialstages")
         Call<List<SpecialStage>> getStartedSpecialStages();
+
+        @GET("/api/time/stageclassificationandroid/{id}")
+        Call<List<TimeKeeping>> getStartedSpecialStages(@Path("id") Long id);
 
 }

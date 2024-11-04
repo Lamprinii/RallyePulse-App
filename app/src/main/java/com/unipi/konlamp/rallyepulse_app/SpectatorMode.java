@@ -8,10 +8,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.unipi.konlamp.rallyepulse_app.API.Competitor;
+import com.unipi.konlamp.rallyepulse_app.API.RetrofitInstance;
+import com.unipi.konlamp.rallyepulse_app.API.SpecialStage;
+import com.unipi.konlamp.rallyepulse_app.API.TimeKeeping;
+
+import java.io.IOException;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SpectatorMode extends AppCompatActivity implements PopUp.MyDialogListener {
     private static final int REQUEST_CODE = 1;
@@ -35,9 +50,17 @@ public class SpectatorMode extends AppCompatActivity implements PopUp.MyDialogLi
         dialog.show(getSupportFragmentManager(), "PopUp");
 
     }
+
+
+    public void stagetimesclick(Long id) {
+        Intent myintent = new Intent(this, StageTimes.class);
+        myintent.putExtra("timekeeping", id);
+        startActivity(myintent);
+    }
     @Override
     public void onDialogPositiveClick(String inputText) {
         Log.d("MainActivity", "Received input: " + inputText);
+        stagetimesclick(Long.parseLong(inputText));
     }
     public void entrylist(View view){
 

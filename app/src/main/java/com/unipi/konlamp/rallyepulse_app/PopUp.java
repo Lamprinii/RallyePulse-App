@@ -39,6 +39,8 @@ public class PopUp extends DialogFragment {
     public AutoCompleteTextView autoCompleteTextView;
     public ArrayAdapter<String> adapterItem;
     public String item;
+
+    public List<SpecialStage> specialstages;
     String [] items = {"Lamia", "Athina"};
 
     private void showMessage(String title, String message){
@@ -73,11 +75,11 @@ public class PopUp extends DialogFragment {
             @Override
             public void onResponse(Call<List<SpecialStage>> call, Response<List<SpecialStage>> response) {
                 if (response.isSuccessful()) {
-                    List<SpecialStage> specialStage = response.body();
-                    Log.d("MainActivity", "Created User: " + specialStage);
+                    specialstages = response.body();
+                    Log.d("MainActivity", "Created User: " + specialstages);
                     ArrayList<String> ss = new ArrayList<>();
-                    for (int i=0; i<specialStage.size(); i++) {
-                        ss.add(specialStage.get(i).getName());
+                    for (int i=0; i<specialstages.size(); i++) {
+                        ss.add(specialstages.get(i).getName());
                     }
                     items = ss.toArray(new String[ss.size()]);
                     adddropdown();
@@ -108,10 +110,9 @@ public class PopUp extends DialogFragment {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //sendResult(Activity.RESULT_OK, item);
-                        listener.onDialogPositiveClick(item);
+                        listener.onDialogPositiveClick(specialstages.get(findIndex(items, item)).getId().toString());
                         //PopUp.this.getDialog().dismiss();
-                        dismiss(); // Κλείνει το DialogFragment
+                        dismiss();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -123,6 +124,13 @@ public class PopUp extends DialogFragment {
         return builder.create();
     }
 
-
+    public static int findIndex(String[] array, String target) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
 }

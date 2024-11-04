@@ -27,5 +27,6 @@
     <string name="and">και</string>
     <string name="hello">Γεια σου</string>
     <string name="selectspecial">Επιλογή Ε.Δ</string>
+    <string name="stagetimes">Αποτελέσματα Ε.Δ.:</string>
 
 </resources>
