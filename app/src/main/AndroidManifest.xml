@@ -21,6 +21,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Overalls"
+            android:exported="false" />
+        <activity
+            android:name=".StartList"
+            android:exported="false" />
+        <activity
+            android:name=".EntryList"
+            android:exported="false" />
+        <activity
             android:name=".StageTimes"
             android:exported="false" />
         <activity

@@ -4,11 +4,12 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.view.Gravity;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,38 +28,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StageTimes extends AppCompatActivity {
-    List<TimeKeeping> times;
+public class EntryList extends AppCompatActivity {
+
+    List<Competitor> competitors;
     Long id;
 
     public TextView titleTextView;
     private TableLayout tableLayout;
 
     private Competitor competitor;
-    public void getCompetitor(Long id){
-        RetrofitInstance.rallyePulseAPI().getByid(id).enqueue(new Callback<Competitor>() {
-            @Override
-            public void onResponse(Call<Competitor> call, Response<Competitor> response) {
-                if (response.isSuccessful()) {
-                    competitor = response.body();
-                } else {
-                    try {
-                        String errorBody = response.errorBody().string();
-                        Log.e("MainActivity", "Error: " + errorBody);
-                        showMessage("Error", getString(R.string.errorauth));
-                    } catch (IOException e) {
-
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Competitor> call, Throwable t) {
-                Log.e("MainActivity", "Failure: " + t.getMessage());
-            }
-        });
-    }
 
     private void fillTableWithData() {
         TableRow tableRow1 = new TableRow(this);
@@ -67,7 +45,7 @@ public class StageTimes extends AppCompatActivity {
         TextView textView1 = new TextView(this);
         textView1.setText("Competitor No");
         textView1.setTypeface(null, Typeface.BOLD);
-        textView1.setPadding(16, 16, 16, 16);
+        textView1.setPadding(5, 16, 5, 16);
         textView1.setGravity(Gravity.CENTER);
         textView1.setLayoutParams(new TableRow.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -78,7 +56,7 @@ public class StageTimes extends AppCompatActivity {
         TextView textView2 = new TextView(this);
         textView2.setText("Driver");
         textView2.setTypeface(null, Typeface.BOLD);
-        textView2.setPadding(16, 16, 16, 16);
+        textView2.setPadding(5, 16, 5, 16);
         textView2.setGravity(Gravity.CENTER);
         textView2.setLayoutParams(new TableRow.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -88,9 +66,9 @@ public class StageTimes extends AppCompatActivity {
         tableRow1.addView(textView2);
 
         TextView textView3 = new TextView(this);
-        textView3.setText("Total Time");
+        textView3.setText("Co Driver");
         textView3.setTypeface(null, Typeface.BOLD);
-        textView3.setPadding(16, 16, 16, 16);
+        textView3.setPadding(5, 16, 5, 16);
         textView3.setGravity(Gravity.CENTER);
         textView3.setLayoutParams(new TableRow.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -98,14 +76,38 @@ public class StageTimes extends AppCompatActivity {
         ));
 
         tableRow1.addView(textView3);
+
+        TextView textView4 = new TextView(this);
+        textView4.setText("Vehicle");
+        textView4.setTypeface(null, Typeface.BOLD);
+        textView4.setPadding(5, 16, 5, 16);
+        textView4.setGravity(Gravity.CENTER);
+        textView4.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        tableRow1.addView(textView4);
+
+        TextView textView5 = new TextView(this);
+        textView5.setText("Cat/Class");
+        textView5.setTypeface(null, Typeface.BOLD);
+        textView5.setPadding(5, 16, 5, 16);
+        textView5.setGravity(Gravity.CENTER);
+        textView5.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        tableRow1.addView(textView5);
         tableLayout.addView(tableRow1);
-        String[][] data = new String[times.size()][2];
-        for (int i=0; i < times.size(); i++) {
+        String[][] data = new String[competitors.size()][2];
+        for (int i=0; i < competitors.size(); i++) {
             String [] temp = {
-            times.get(i).getId().getCompetitorid().toString(), times.get(i).getName() ,times.get(i).getTotal_time().toString()
-    };
-    data[i] = temp;
-    }
+                    competitors.get(i).getCo_number().toString(), competitors.get(i).getDriver() ,competitors.get(i).getCodriver(), competitors.get(i).getVehicle(), competitors.get(i).getCategory() + "/" + competitors.get(i).getCar_class()
+            };
+            data[i] = temp;
+        }
         for (int j=0; j < data.length; j++) {
             TableRow tableRow = new TableRow(this);
             String[] row = data[j];
@@ -145,17 +147,16 @@ public class StageTimes extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        id = this.getIntent().getLongExtra("timekeeping",0);
         titleTextView = findViewById(R.id.titleTextView);
-        titleTextView.setText(getString(R.string.stagetimes) + " " + id);
+        titleTextView.setText(getString(R.string.entrylist));
         tableLayout = findViewById(R.id.tableLayout);
 
-        RetrofitInstance.rallyePulseAPI().getStartedSpecialStages(id).enqueue(new Callback<List<TimeKeeping>>() {
+        RetrofitInstance.rallyePulseAPI().getCompetitors().enqueue(new Callback<List<Competitor>>() {
             @Override
-            public void onResponse(Call<List<TimeKeeping>> call, Response<List<TimeKeeping>> response) {
+            public void onResponse(Call<List<Competitor>> call, Response<List<Competitor>> response) {
                 if (response.isSuccessful()) {
-                    times = response.body();
-                    Log.d("MainActivity", "Received times: " + times);
+                    competitors = response.body();
+                    Log.d("MainActivity", "Received times: " + competitors);
                     fillTableWithData();
                 } else {
                     try {
@@ -170,7 +171,7 @@ public class StageTimes extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<TimeKeeping>> call, Throwable t) {
+            public void onFailure(Call<List<Competitor>> call, Throwable t) {
                 Log.e("MainActivity", "Failure: " + t.getMessage());
             }
         });

@@ -8,12 +8,20 @@
     tools:context=".StageTimes">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="411dp"
+        android:layout_height="729dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="2dp">
 
         <!-- TextView για τον τίτλο -->
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="398dp"
+            android:layout_height="98dp"
+            app:srcCompat="@drawable/logo" />
+
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
@@ -30,12 +38,10 @@
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:shrinkColumns="*">
-        </TableLayout>
+            android:shrinkColumns="*"
+            android:stretchColumns="*"></TableLayout>
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

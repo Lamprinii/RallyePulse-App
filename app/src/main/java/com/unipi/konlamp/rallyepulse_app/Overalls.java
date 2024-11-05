@@ -4,11 +4,12 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.view.Gravity;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.unipi.konlamp.rallyepulse_app.API.Competitor;
+import com.unipi.konlamp.rallyepulse_app.API.Overall;
 import com.unipi.konlamp.rallyepulse_app.API.RetrofitInstance;
 import com.unipi.konlamp.rallyepulse_app.API.TimeKeeping;
 
@@ -27,9 +29,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StageTimes extends AppCompatActivity {
-    List<TimeKeeping> times;
-    Long id;
+public class Overalls extends AppCompatActivity {
+
+    List<Overall> times;
 
     public TextView titleTextView;
     private TableLayout tableLayout;
@@ -102,10 +104,10 @@ public class StageTimes extends AppCompatActivity {
         String[][] data = new String[times.size()][2];
         for (int i=0; i < times.size(); i++) {
             String [] temp = {
-            times.get(i).getId().getCompetitorid().toString(), times.get(i).getName() ,times.get(i).getTotal_time().toString()
-    };
-    data[i] = temp;
-    }
+                    times.get(i).getCo_number().toString(), times.get(i).getName(), times.get(i).getTime()
+            };
+            data[i] = temp;
+        }
         for (int j=0; j < data.length; j++) {
             TableRow tableRow = new TableRow(this);
             String[] row = data[j];
@@ -145,14 +147,13 @@ public class StageTimes extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        id = this.getIntent().getLongExtra("timekeeping",0);
         titleTextView = findViewById(R.id.titleTextView);
-        titleTextView.setText(getString(R.string.stagetimes) + " " + id);
+        titleTextView.setText(getString(R.string.overalls));
         tableLayout = findViewById(R.id.tableLayout);
 
-        RetrofitInstance.rallyePulseAPI().getStartedSpecialStages(id).enqueue(new Callback<List<TimeKeeping>>() {
+        RetrofitInstance.rallyePulseAPI().getOverallClassification().enqueue(new Callback<List<Overall>>() {
             @Override
-            public void onResponse(Call<List<TimeKeeping>> call, Response<List<TimeKeeping>> response) {
+            public void onResponse(Call<List<Overall>> call, Response<List<Overall>> response) {
                 if (response.isSuccessful()) {
                     times = response.body();
                     Log.d("MainActivity", "Received times: " + times);
@@ -170,7 +171,7 @@ public class StageTimes extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<TimeKeeping>> call, Throwable t) {
+            public void onFailure(Call<List<Overall>> call, Throwable t) {
                 Log.e("MainActivity", "Failure: " + t.getMessage());
             }
         });

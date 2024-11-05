@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.unipi.konlamp.rallyepulse_app.API.Competitor;
 import com.unipi.konlamp.rallyepulse_app.API.RetrofitInstance;
 import com.unipi.konlamp.rallyepulse_app.API.SpecialStage;
+import com.unipi.konlamp.rallyepulse_app.API.StartListOb;
 import com.unipi.konlamp.rallyepulse_app.API.TimeKeeping;
 
 import java.io.IOException;
@@ -63,15 +64,18 @@ public class SpectatorMode extends AppCompatActivity implements PopUp.MyDialogLi
         stagetimesclick(Long.parseLong(inputText));
     }
     public void entrylist(View view){
-
+        Intent myintent = new Intent(this, EntryList.class);
+        startActivity(myintent);
     }
 
     public void startlist(View view){
-
+        Intent myintent = new Intent(this, StartList.class);
+        startActivity(myintent);
     }
 
     public void overalls(View view){
-
+        Intent myintent = new Intent(this, Overalls.class);
+        startActivity(myintent);
     }
 
 }
