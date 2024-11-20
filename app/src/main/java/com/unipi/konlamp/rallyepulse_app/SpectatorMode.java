@@ -8,12 +8,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.unipi.konlamp.rallyepulse_app.API.Competitor;
 import com.unipi.konlamp.rallyepulse_app.API.RetrofitInstance;
 import com.unipi.konlamp.rallyepulse_app.API.SpecialStage;
@@ -38,11 +42,23 @@ public class SpectatorMode extends AppCompatActivity implements PopUp.MyDialogLi
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_spectator_mode);
+        FirebaseMessaging.getInstance().subscribeToTopic("Alerts") //Για να μπορούμε να λαμβάνουμε ειδοποιήσεις μέσω του Firebase Messaging, κάνουμε subscribe στο θέμα "Alerts"
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d("teeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeest", "test");
+                        String msg = "Done";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+                    }
+                });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
     }
 
     public void stageresults(View view){
