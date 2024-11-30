@@ -7,7 +7,7 @@ public class SpecialStage {
     private Long id;
 
     private String name;
-    private float distance;
+    private String distance;
 
     public Long getId() {
         return id;
@@ -25,15 +25,15 @@ public class SpecialStage {
         this.name = name;
     }
 
-    public float getDistance() {
+    public String getDistance() {
         return distance;
     }
 
-    public void setDistance(float distance) {
+    public void setDistance(String distance) {
         this.distance = distance;
     }
 
-    public SpecialStage(Long id, String name, float distance) {
+    public SpecialStage(Long id, String name, String distance) {
         this.id = id;
         this.name = name;
         this.distance = distance;

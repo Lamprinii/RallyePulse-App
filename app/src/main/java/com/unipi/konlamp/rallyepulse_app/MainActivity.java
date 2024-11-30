@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothGattServer gattServer;
     private TextView statusLabel;
-    private Button startButton;
-
     private boolean isRunning = false;
 
 
@@ -84,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         conumber = this.getIntent().getLongExtra("conumber", 0);
         countdownText = findViewById(R.id.countdownText);
         statusLabel = findViewById(R.id.statusLabel);
-        startButton = findViewById(R.id.startButton);
         redbarcontainer = findViewById(R.id.redbarcontainer);
         redbars = new View[]{
                 findViewById(R.id.redbar1),
@@ -101,17 +98,13 @@ public class MainActivity extends AppCompatActivity {
         } else {
             bluetoothAdapter.setName("Rallye_" + conumber);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startTime = LocalTime.of(17, 11);
-            startCountdown();
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            startTime = LocalTime.of(17, 11);
+//            startCountdown();
+//        }
+        countdownText.setText("Waiting to start");
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGattServer();
-            }
-        });
+        startGattServer();
 
     }
 

@@ -44,23 +44,32 @@ public class CompetitorMode extends AppCompatActivity implements PopUp.MyDialogL
         dialog.show(getSupportFragmentManager(), "PopUp");
 
     }
+    public void stagetimesclick(Long id) {
+        Intent myintent = new Intent(this, StageTimes.class);
+        myintent.putExtra("timekeeping", id);
+        startActivity(myintent);
+    }
     @Override
     public void onDialogPositiveClick(String inputText) {
         Log.d("MainActivity", "Received input: " + inputText);
+        stagetimesclick(Long.parseLong(inputText));
     }
 
     public void entrylist(View view){
-
+        Intent myintent = new Intent(this, EntryList.class);
+        startActivity(myintent);
 
     }
 
     public void startlist(View view){
-
+        Intent myintent = new Intent(this, StartList.class);
+        startActivity(myintent);
 
     }
 
     public void overalls(View view){
-
+        Intent myintent = new Intent(this, Overalls.class);
+        startActivity(myintent);
 
     }
     public void settings(View view){

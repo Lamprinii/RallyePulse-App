@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889110931711",
+    "project_id": "rallyepulse---app",
+    "storage_bucket": "rallyepulse---app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889110931711:android:faece2047dac492cd604ca",
+        "android_client_info": {
+          "package_name": "com.unipi.konlamp.rallyepulse_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3D7jN40JxaQNxNj5XMOdszI8jkEhPYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
