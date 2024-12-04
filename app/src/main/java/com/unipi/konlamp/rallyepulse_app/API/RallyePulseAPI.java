@@ -28,7 +28,7 @@ public interface RallyePulseAPI {
         @GET("/api/startlist/getstartlist")
         Call<List<StartListOb>> getStartList();
 
-        @GET("/api/time/overallclassificationandroid")
+        @GET("/api/time/getOverallClassification")
         Call<List<Overall>> getOverallClassification();
 
 }

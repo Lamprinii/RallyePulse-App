@@ -67,6 +67,7 @@ public class StageTimes extends AppCompatActivity {
         TextView textView0 = new TextView(this);
         textView0.setText("Pos");
         textView0.setTypeface(null, Typeface.BOLD);
+        textView0.setTextSize(9);
         textView0.setPadding(16, 16, 16, 16);
         textView0.setGravity(Gravity.CENTER);
         textView0.setLayoutParams(new TableRow.LayoutParams(
@@ -78,6 +79,7 @@ public class StageTimes extends AppCompatActivity {
         TextView textView1 = new TextView(this);
         textView1.setText("Competitor No");
         textView1.setTypeface(null, Typeface.BOLD);
+        textView1.setTextSize(9);
         textView1.setPadding(16, 16, 16, 16);
         textView1.setGravity(Gravity.CENTER);
         textView1.setLayoutParams(new TableRow.LayoutParams(
@@ -89,6 +91,7 @@ public class StageTimes extends AppCompatActivity {
         TextView textView2 = new TextView(this);
         textView2.setText("Driver");
         textView2.setTypeface(null, Typeface.BOLD);
+        textView2.setTextSize(9);
         textView2.setPadding(16, 16, 16, 16);
         textView2.setGravity(Gravity.CENTER);
         textView2.setLayoutParams(new TableRow.LayoutParams(
@@ -101,6 +104,7 @@ public class StageTimes extends AppCompatActivity {
         TextView textView3 = new TextView(this);
         textView3.setText("Total Time");
         textView3.setTypeface(null, Typeface.BOLD);
+        textView3.setTextSize(9);
         textView3.setPadding(16, 16, 16, 16);
         textView3.setGravity(Gravity.CENTER);
         textView3.setLayoutParams(new TableRow.LayoutParams(
@@ -109,6 +113,19 @@ public class StageTimes extends AppCompatActivity {
         ));
 
         tableRow1.addView(textView3);
+
+        TextView textView4 = new TextView(this);
+        textView4.setText("Diff");
+        textView4.setTypeface(null, Typeface.BOLD);
+        textView4.setTextSize(9);
+        textView4.setPadding(16, 16, 16, 16);
+        textView4.setGravity(Gravity.CENTER);
+        textView4.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        tableRow1.addView(textView4);
         tableLayout.addView(tableRow1);
         String[][] data = new String[times.size()][2];
         for (int i=0; i < times.size(); i++) {
@@ -116,7 +133,7 @@ public class StageTimes extends AppCompatActivity {
             String comp2[] = comp[1].split("-");
             String [] temp = {
                     String.valueOf(i+1),
-            times.get(i).getId().getCompetitorid().toString(), comp2[0] + "-" +comp[2],times.get(i).getTotal_time().toString()
+            times.get(i).getId().getCompetitorid().toString(), comp2[0] + "-" +comp[2],times.get(i).getTotal_time().toString(), times.get(i).getDiffToPrevious()
     };
     data[i] = temp;
     }
@@ -135,7 +152,7 @@ public class StageTimes extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 ));
-
+                textView.setTextSize(9);
                 tableRow.addView(textView);
             }
 

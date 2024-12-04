@@ -20,7 +20,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.unipi.konlamp.rallyepulse_app.API.Competitor;
 import com.unipi.konlamp.rallyepulse_app.API.Overall;
 import com.unipi.konlamp.rallyepulse_app.API.RetrofitInstance;
-import com.unipi.konlamp.rallyepulse_app.API.TimeKeeping;
 
 import java.io.IOException;
 import java.util.List;
@@ -76,6 +75,7 @@ public class Overalls extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
 
+        textView0.setTextSize(9);
         tableRow1.addView(textView0);
         TextView textView1 = new TextView(this);
         textView1.setText("Competitor No");
@@ -87,6 +87,7 @@ public class Overalls extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
 
+        textView1.setTextSize(9);
         tableRow1.addView(textView1);
         TextView textView2 = new TextView(this);
         textView2.setText("Driver");
@@ -98,6 +99,7 @@ public class Overalls extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
 
+        textView2.setTextSize(9);
         tableRow1.addView(textView2);
 
         TextView textView3 = new TextView(this);
@@ -110,13 +112,29 @@ public class Overalls extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT
         ));
 
+        textView3.setTextSize(9);
         tableRow1.addView(textView3);
+
+        TextView textView4 = new TextView(this);
+        textView4.setText("Diff");
+        textView4.setTypeface(null, Typeface.BOLD);
+        textView4.setPadding(16, 16, 16, 16);
+        textView4.setGravity(Gravity.CENTER);
+        textView4.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        textView4.setTextSize(9);
+        tableRow1.addView(textView4);
         tableLayout.addView(tableRow1);
         String[][] data = new String[times.size() + 1][2];
         for (int i=0; i < times.size(); i++) {
+            String comp[] = times.get(i).getName().split(" ");
+            String comp2[] = comp[1].split("-");
             String [] temp = {
                     String.valueOf(i+1),
-                    times.get(i).getCo_number().toString(), times.get(i).getName(), times.get(i).getTime()
+                    times.get(i).getCo_number().toString(), comp2[0] + "-" +comp[2], times.get(i).getTime(), times.get(i).getPrev()
             };
             data[i] = temp;
         }
@@ -135,7 +153,7 @@ public class Overalls extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                 ));
-
+                textView.setTextSize(9);
                 tableRow.addView(textView);
             }
 
