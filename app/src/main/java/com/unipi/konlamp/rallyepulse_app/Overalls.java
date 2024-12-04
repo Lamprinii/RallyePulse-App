@@ -66,6 +66,17 @@ public class Overalls extends AppCompatActivity {
         TableRow tableRow1 = new TableRow(this);
         tableRow1.setPadding(20,20,20,20);
         tableRow1.setBackgroundColor(Color.parseColor("#00D9FF"));
+        TextView textView0 = new TextView(this);
+        textView0.setText("Pos");
+        textView0.setTypeface(null, Typeface.BOLD);
+        textView0.setPadding(16, 16, 16, 16);
+        textView0.setGravity(Gravity.CENTER);
+        textView0.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+
+        tableRow1.addView(textView0);
         TextView textView1 = new TextView(this);
         textView1.setText("Competitor No");
         textView1.setTypeface(null, Typeface.BOLD);
@@ -101,9 +112,10 @@ public class Overalls extends AppCompatActivity {
 
         tableRow1.addView(textView3);
         tableLayout.addView(tableRow1);
-        String[][] data = new String[times.size()][2];
+        String[][] data = new String[times.size() + 1][2];
         for (int i=0; i < times.size(); i++) {
             String [] temp = {
+                    String.valueOf(i+1),
                     times.get(i).getCo_number().toString(), times.get(i).getName(), times.get(i).getTime()
             };
             data[i] = temp;

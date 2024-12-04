@@ -20,7 +20,7 @@ public interface RallyePulseAPI {
         @GET("/api/specialstage/getstartedspecialstages")
         Call<List<SpecialStage>> getStartedSpecialStages();
 
-        @GET("/api/time/stageclassificationandroid/{id}")
+        @GET("/api/time/getStageClassification/{id}")
         Call<List<TimeKeeping>> getStartedSpecialStages(@Path("id") Long id);
         @GET("/api/competitor/getCompetitors")
         Call<List<Competitor>> getCompetitors();
